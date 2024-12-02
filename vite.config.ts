@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     open: true,
     proxy: {
-      "/api": {
+      "/sugg": {
         target:
           "https://cmexback-willy3087-williams-projects-2c392421.vercel.app",
         changeOrigin: true,

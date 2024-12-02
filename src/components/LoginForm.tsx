@@ -24,7 +24,7 @@ const LoginForm: React.FC = () => {
     setIsLoading(true);
     setResetTime(false);
     try {
-      const response = await fetch("/api/sugg", {
+      const response = await fetch("/sugg", {
         // Alterado aqui
         method: "POST",
         headers: {
