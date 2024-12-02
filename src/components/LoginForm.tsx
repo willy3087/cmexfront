@@ -4,6 +4,12 @@ import AppleStyleInput from "./AppleStyleInput";
 import ProgressBar from "./ProgressBar";
 import { Suggestion } from "../types";
 
+const express = require("express");
+const cors = require("cors");
+const app = express();
+
+app.use(cors());
+
 const LoginForm: React.FC = () => {
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
