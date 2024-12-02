@@ -25,7 +25,7 @@ const LoginForm: React.FC = () => {
     setResetTime(false);
     try {
       const response = await fetch(
-        "https://cmexback-williams-projects-2c392421.vercel.app/api/index",
+        "https://cmexback-i617kfvd5-williams-projects-2c392421.vercel.app/api/index",
         {
           method: "POST",
           headers: {
