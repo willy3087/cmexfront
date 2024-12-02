@@ -24,16 +24,14 @@ const LoginForm: React.FC = () => {
     setIsLoading(true);
     setResetTime(false);
     try {
-      const response = await fetch(
-        "https://cmexback-willy3087-williams-projects-2c392421.vercel.app/sugg",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ query: value }),
-        }
-      );
+      const response = await fetch("/api/sugg", {
+        // Alterado aqui
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ query: value }),
+      });
 
       const data = await response.json();
       setSuggestions(data);
@@ -44,7 +42,6 @@ const LoginForm: React.FC = () => {
       setResetTime(true);
     }
   };
-
   const debouncedFetch = useRef(
     debounce((value: string) => {
       fetchSuggestions(value);
