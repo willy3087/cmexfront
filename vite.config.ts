@@ -8,10 +8,9 @@ export default defineConfig({
     proxy: {
       "/sugg": {
         target:
-          "https://cmexback-willy3087-williams-projects-2c392421.vercel.app",
+          "https://cmexback-p4bukm9tp-williams-projects-2c392421.vercel.app",
         changeOrigin: true,
         secure: false,
-        rewrite: (path) => path.replace(/^\/api/, ""),
       },
     },
   },
