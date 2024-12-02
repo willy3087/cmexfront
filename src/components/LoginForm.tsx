@@ -3,6 +3,7 @@ import { debounce } from "lodash";
 import AppleStyleInput from "./AppleStyleInput";
 import ProgressBar from "./ProgressBar";
 import { Suggestion } from "../types";
+import axios from "axios";
 
 const LoginForm: React.FC = () => {
   const [query, setQuery] = useState("");
@@ -24,16 +25,20 @@ const LoginForm: React.FC = () => {
     setIsLoading(true);
     setResetTime(false);
     try {
-      const response = await fetch("/sugg", {
-        // Alterado aqui
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await axios.post(
+        "/api/sugg",
+        {
+          // Alterado aqui
+          query: value,
         },
-        body: JSON.stringify({ query: value }),
-      });
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-      const data = await response.json();
+      const data = response.data;
       setSuggestions(data);
     } catch (error) {
       console.error("Erro ao buscar sugestões:", error);
@@ -42,6 +47,7 @@ const LoginForm: React.FC = () => {
       setResetTime(true);
     }
   };
+
   const debouncedFetch = useRef(
     debounce((value: string) => {
       fetchSuggestions(value);
