@@ -4,18 +4,12 @@ import AppleStyleInput from "./AppleStyleInput";
 import ProgressBar from "./ProgressBar";
 import { Suggestion } from "../types";
 
-const express = require("express");
-const cors = require("cors");
-const app = express();
-
-app.use(cors());
-
 const LoginForm: React.FC = () => {
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [resetTime, setResetTime] = useState(false);
-  const [selectedFilters, setSelectedFilters] = useState<string[]>([
+  const [selectedFilters] = useState<string[]>([
     "NCM",
     "Atributos",
     "Matéria prima",
@@ -31,7 +25,7 @@ const LoginForm: React.FC = () => {
     setResetTime(false);
     try {
       const response = await fetch(
-        "https://cmexback-h2tujnbwc-williams-projects-2c392421.vercel.app/api/index",
+        "https://cmexback-willy3087-williams-projects-2c392421.vercel.app/sugg",
         {
           method: "POST",
           headers: {

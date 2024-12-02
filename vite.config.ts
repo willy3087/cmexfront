@@ -8,7 +8,7 @@ export default defineConfig({
     proxy: {
       "/api": {
         target:
-          "https://cmexback-h2tujnbwc-williams-projects-2c392421.vercel.app",
+          "https://cmexback-willy3087-williams-projects-2c392421.vercel.app",
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path.replace(/^\/api/, ""),
