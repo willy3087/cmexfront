@@ -3,7 +3,7 @@ import { debounce } from "lodash";
 import AppleStyleInput from "./AppleStyleInput";
 import ProgressBar from "./ProgressBar";
 import { Suggestion } from "../types";
-import axios from "axios";
+import axiosInstance from "../axiosConfig";
 
 const LoginForm: React.FC = () => {
   const [query, setQuery] = useState("");
@@ -25,8 +25,8 @@ const LoginForm: React.FC = () => {
     setIsLoading(true);
     setResetTime(false);
     try {
-      const response = await axios.post(
-        "https://api.openai.com/v1/chat/completions",
+      const response = await axiosInstance.post(
+        "/",
         {
           model: "gpt-4", // Ou o modelo de sua preferência
           messages: [
@@ -53,7 +53,7 @@ const LoginForm: React.FC = () => {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${process.env.OPENAI_API_KEY}`, // Certifique-se de que a chave da API está configurada corretamente
+            Authorization: `Bearer ${process.env.VITE_OPENAI_API_KEY}`, // Certifique-se de que a chave da API está configurada corretamente
           },
         }
       );
