@@ -25,7 +25,7 @@ const LoginForm: React.FC = () => {
     setIsLoading(true);
     setResetTime(false);
     try {
-      const response = await axiosInstance.post("/sugg", {
+      const response = await axiosInstance.post("/openai", {
         // Usa a instância configurada do axios
         query: value,
       });
