@@ -3,7 +3,7 @@ import { debounce } from "lodash";
 import AppleStyleInput from "./AppleStyleInput";
 import ProgressBar from "./ProgressBar";
 import { Suggestion } from "../types";
-import axios from "axios";
+import axiosInstance from "../axiosConfig"; // Importa a instância configurada do axios
 
 const LoginForm: React.FC = () => {
   const [query, setQuery] = useState("");
@@ -25,18 +25,10 @@ const LoginForm: React.FC = () => {
     setIsLoading(true);
     setResetTime(false);
     try {
-      const response = await axios.post(
-        "/api/sugg",
-        {
-          // Alterado aqui
-          query: value,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await axiosInstance.post("/", {
+        // Usa a instância configurada do axios
+        query: value,
+      });
 
       const data = response.data;
       setSuggestions(data);
