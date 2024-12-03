@@ -42,7 +42,7 @@ const AppleStyleInput: React.FC<AppleStyleInputProps> = ({
             left: "16px",
             top: "47%",
             transform: "translateY(-50%)",
-            translate: "0.5s",
+            translate: "2s",
           }}
         />
         <input
@@ -52,7 +52,8 @@ const AppleStyleInput: React.FC<AppleStyleInputProps> = ({
           onKeyDown={handleKeyDown}
           onBlur={onBlur}
           placeholder={placeholder}
-          className="glowing-input"
+          // className="glowing-input"
+          className={`glowing-input py-2 ${isLoading ? "is-glowing" : ""}`}
           readOnly={readOnly}
           style={{ paddingLeft: "48px" }} // 16px (espaço do ícone) + 16px (espaço do texto) + 16px (padding interno)
         />
