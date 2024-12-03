@@ -4,7 +4,7 @@ const axiosInstance = axios.create({
   baseURL: "/", // Base URL para todas as requisições
   headers: {
     "Content-Type": "application/json",
-    Authorization: `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`, // Use import.meta.env para acessar variáveis de ambiente no Vite
+    Authorization: `Bearer ${import.meta.env.OPENAI_API_KEY}`, // Use import.meta.env para acessar variáveis de ambiente no Vite
   },
 });
 
