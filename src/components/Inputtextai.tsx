@@ -34,7 +34,7 @@ const AppleStyleInput: React.FC<AppleStyleInputProps> = ({
 
   return (
     <div style={{ width: width || "100%" }}>
-      <div className={`input-container py-2 ${isLoading ? "is-glowing" : ""}`}>
+      <div className={`animate-glow py-2 ${isLoading ? "is-glowing" : ""}`}>
         <AiIcon
           className="ai-icon"
           style={{
