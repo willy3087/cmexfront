@@ -2,7 +2,8 @@
 
 interface ImportMetaEnv {
   readonly OPENAI_API_KEY: string;
-  // Outras variáveis de ambiente que você possa ter
+  readonly VITE_APP_SUPABASE_URL: string;
+  readonly VITE_APP_SUPABASE_ANON_KEY: string;
 }
 
 interface ImportMeta {
