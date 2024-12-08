@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { debounce } from "lodash";
-import AppleStyleInput from "./AppleStyleInput";
+import Inputtextai from "./Inputtextai";
 import ProgressBar from "./ProgressBar";
 import { Suggestion } from "../types";
 import axiosInstance from "../axiosConfig";
@@ -104,7 +104,7 @@ const LoginForm: React.FC = () => {
           </h2>
 
           <div className="search-container py-4">
-            <AppleStyleInput
+            <Inputtextai
               width="100%"
               value={query}
               onChange={handleChange}

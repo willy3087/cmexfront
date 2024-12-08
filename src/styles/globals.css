@@ -2,48 +2,76 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Animações */
-@keyframes glow {
-  0% {
-    box-shadow: 0 0 2px red, 0 0 4px orange, 0 0 6px purple, 0 0 8px green,
-      0 0 10px blue, 0 0 12px purple;
-  }
-  25% {
-    box-shadow: 0 0 2px orange, 0 0 4px purple, 0 0 6px blue, 0 0 8px purple,
-      0 0 10px green, 0 0 12px red;
-  }
-  50% {
-    box-shadow: 0 0 2px purple, 0 0 4px blue, 0 0 6px purple, 0 0 8px green,
-      0 0 10px red, 0 0 12px orange;
-  }
-  75% {
-    box-shadow: 0 0 2px blue, 0 0 4px purple, 0 0 6px green, 0 0 8px red,
-      0 0 10px orange, 0 0 12px purple;
-  }
-  100% {
-    box-shadow: 0 0 2px red, 0 0 4px orange, 0 0 6px purple, 0 0 8px green,
-      0 0 10px blue, 0 0 12px purple;
-  }
+.input-wrapper {
+  @apply relative w-full overflow-hidden p-2 bg-[#1c1f2b]  /* substitui background-color */
+  text-left  /* substitui text-align */ 
+  rounded-md  /* substitui border-radius */;
+}
+.input {
+  @apply relative
+    w-full
+    mx-auto
+    p-[2px]  /* padding fino para simular borda */
+    bg-[#1c1f2b]
+    text-left 
+    rounded-md
+    scale-90
+    transform
+    transition-all
+    z-10
+    border-spacing-2  /* espaçamento uniforme */
+    overflow-hidden; /* mantém o conteúdo dentro dos limites */
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+.input::after,
+.input::before {
+  @apply h-full
+    w-full;
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: conic-gradient(
+    from var(--angle),
+    #ff4545,
+    #00ff99,
+    #006aff,
+    #ff0095,
+    #ff4545
+  );
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  padding: 2px;
+  border-radius: 4px;
+  animation: 3s spin linear infinite;
+}
+
+.input::before {
+  filter: blur(0.5rem);
+  opacity: 0.5;
 }
 
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
+  from {
+    --angle: 0deg;
   }
-  100% {
-    transform: rotate(360deg);
+  to {
+    --angle: 360deg;
   }
 }
 
-.input-container {
-  @apply px-1 py-1 relative w-full bg-gray-700/50 text-white rounded-full
-  border border-gray-600/50
-  hover:bg-gray-600/50 cursor-pointer
-  transition-all duration-200;
-}
-
-.input-container.is-glowing {
-  animation: glow 2s infinite;
+body {
+  min-height: 100vh;
+  background: #0b0d15;
+  color: #a2a5b3;
+  align-content: center;
 }
 
 .loading-icon {
@@ -56,32 +84,6 @@
 .ai-icon {
   @apply absolute top-1/2 
   text-gray-400;
-}
-
-.glowing-input {
-  @apply w-full px-4 py-3 
-  bg-[#1c1c1e] text-white rounded-full
-  outline-none
-  border-[1px] border-transparent/20;
-  transition: border-color 2s ease-in-out;
-  padding-left: 3rem; /* Espaço para o ícone AI */
-}
-
-.glowing-input:focus {
-  animation: glow 10s linear infinite;
-  border-width: 1px;
-}
-
-.suggestion-chip {
-  @apply px-3 py-1 bg-white/90 rounded-full text-sm
-  hover:bg-gray-100 cursor-pointer shadow-sm
-  transition-all duration-200;
-}
-
-.filter-chip {
-  @apply px-3 py-1 bg-white/90 rounded-full text-sm
-  hover:bg-gray-100 cursor-pointer shadow-sm
-  transition-all duration-200 text-blue-600;
 }
 
 /* forms */

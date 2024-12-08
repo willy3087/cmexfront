@@ -33,33 +33,53 @@ const AppleStyleInput: React.FC<AppleStyleInputProps> = ({
   };
 
   return (
-    <div style={{ width: width || "100%" }}>
-      <div className={`input-container py-2 ${isLoading ? "is-glowing" : ""}`}>
-        <AiIcon
-          className="ai-icon"
-          style={{
-            position: "absolute",
-            left: "16px",
-            top: "47%",
-            transform: "translateY(-50%)",
-            translate: "0.5s",
-          }}
-        />
-        <input
-          type="text"
-          value={value}
-          onChange={onChange}
-          onKeyDown={handleKeyDown}
-          onBlur={onBlur}
-          placeholder={placeholder}
-          className="glowing-input"
-          readOnly={readOnly}
-          style={{ paddingLeft: "48px" }} // 16px (espaço do ícone) + 16px (espaço do texto) + 16px (padding interno)
-        />
-        {isLoading && <FaSpinner className="loading-icon" />}
-      </div>
+    <div
+      className={`${isLoading ? "input" : "input-wrapper"} ${
+        !isLoading ? "border border-blue-500" : ""
+      }`}
+    >
+      <input
+        type="text"
+        value={value}
+        onChange={onChange}
+        onKeyDown={handleKeyDown}
+        onBlur={onBlur}
+        placeholder={placeholder}
+        className="input w-full bg-transparent outline-none"
+        readOnly={readOnly}
+      />
+      {isLoading && <FaSpinner className="loading-icon" />}
     </div>
   );
+
+  // return (
+  //   <div style={{ width: width || "100%" }}>
+  //     <div className={`input-container py-2 ${isLoading ? "is-glowing" : ""}`}>
+  //       <AiIcon
+  //         className="ai-icon"
+  //         style={{
+  //           position: "absolute",
+  //           left: "16px",
+  //           top: "47%",
+  //           transform: "translateY(-50%)",
+  //           translate: "0.5s",
+  //         }}
+  //       />
+  //       <input
+  //         type="text"
+  //         value={value}
+  //         onChange={onChange}
+  //         onKeyDown={handleKeyDown}
+  //         onBlur={onBlur}
+  //         placeholder={placeholder}
+  //         className="glowing-input"
+  //         readOnly={readOnly}
+  //         style={{ paddingLeft: "48px" }} // 16px (espaço do ícone) + 16px (espaço do texto) + 16px (padding interno)
+  //       />
+  //       {isLoading && <FaSpinner className="loading-icon" />}
+  //     </div>
+  //   </div>
+  // );
 };
 
 export default AppleStyleInput;
